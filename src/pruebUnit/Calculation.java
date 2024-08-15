@@ -2,9 +2,6 @@ package pruebUnit;
 
 
 public class Calculation {
-	public static void main(String[] args) {
-        System.out.println("Hello World!");
-    }
 	public static int findMax(int arr[]) {
 		int max = 0;
 		for(int i=1; i<arr.length; i++) {
@@ -13,5 +10,4 @@ public class Calculation {
 		}
 		return max;
 	}
-	
 }
