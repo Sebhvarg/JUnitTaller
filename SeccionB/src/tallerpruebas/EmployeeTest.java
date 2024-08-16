@@ -1,6 +1,8 @@
 package tallerpruebas;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.time.LocalDate;
 
@@ -149,11 +151,24 @@ class EmployeeTest {
 		
 		@Test
 		void employeeNonUSDTestCalculateYearBonus() {
-			assertEquals(386,WorkerNonUSD.CalculateYearBonus());
+			assertEquals(300,WorkerNonUSD.CalculateYearBonus());
 			assertEquals(2093,supervisorNonUSD.CalculateYearBonus());
 			assertEquals(3236,managerNonUSD.CalculateYearBonus());
 		}
 	    
+		@Test
+		public void isDifFerentCalculateYearBonusLowSalary() {
+		    Employee lowSalaryWorker = new Employee(400, "USD", 0.0F, EmployeeType.Worker);
+		    assertFalse(386 != lowSalaryWorker.CalculateYearBonus());
+		}
+		
+		@Test
+		public void isDifferentCalculateYearBonusManagerHighSalary() {
+		    Employee managerHighSalary = new Employee(10000, "EUR", 0.5F, EmployeeType.Manager);
+		    float expectedBonus = (10000 * 0.95F) + 386.0F;
+		    float actualBonus = managerHighSalary.CalculateYearBonus();
+		    assertTrue(expectedBonus != actualBonus);
+		}
 	    
 }
     
