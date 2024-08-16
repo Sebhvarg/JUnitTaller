@@ -1,13 +1,9 @@
 package tallerpruebas;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,8 +14,6 @@ class EmployeeTest {
     private Employee supervisorNonUSD;
     private Employee managerUSD;
     private Employee managerNonUSD;
-    private Employee supervisorZeroBonus;
-    private Employee workerNegativeBonus;
     
     
     @BeforeEach
@@ -146,7 +140,19 @@ class EmployeeTest {
 	        }
 	    }
 	    
-	    
+	    @Test
+		void employeeUSDTestCalculateYearBonus() {
+			assertEquals(386,WorkerUSD.CalculateYearBonus());
+			assertEquals(2193,supervisorUSD.CalculateYearBonus());
+			assertEquals(3386,managerUSD.CalculateYearBonus());
+		}
+		
+		@Test
+		void employeeNonUSDTestCalculateYearBonus() {
+			assertEquals(386,WorkerNonUSD.CalculateYearBonus());
+			assertEquals(2093,supervisorNonUSD.CalculateYearBonus());
+			assertEquals(3236,managerNonUSD.CalculateYearBonus());
+		}
 	    
 	    
 }
